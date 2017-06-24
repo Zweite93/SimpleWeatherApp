@@ -9,7 +9,7 @@
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
             <StackPanel Orientation="Horizontal">
                 <Label Content="City:"/>
-                <TextBox HorizontalAlignment="Center" Height="20" Width="150" Text="{Binding CityName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center"/>
+                <TextBox HorizontalAlignment="Center" Height="20" Width="150" Text="{Binding CityName, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="33, 0, 0, 0">
                 <Button Height="20" Width="60" Content="Add" Command="{Binding AddCommand}" Margin="0, 0, 5, 0"/>

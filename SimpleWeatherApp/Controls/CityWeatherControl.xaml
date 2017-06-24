@@ -5,7 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:viewModels="clr-namespace:SimpleWeatherApp.ViewModels"
              xmlns:controls="clr-namespace:SimpleWeatherApp.Controls"
-             mc:Ignorable="d">
+             mc:Ignorable="d"
+             MaxWidth="1600">
 
     <Control.Resources>
         <DataTemplate DataType="{x:Type TypeName=viewModels:DailyForecastControlViewModel}">
@@ -34,22 +35,22 @@
         </Style>
     </Control.Resources>
 
-    <Grid Background="White">
+    <Grid Background="White" MaxWidth="1600">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <Border BorderThickness="1" BorderBrush="Black" HorizontalAlignment="Left">
-            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Stretch" Margin="5">
+        <Border BorderThickness="1" BorderBrush="Black" HorizontalAlignment="Left" MaxWidth="1600">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Stretch" Margin="5" MaxWidth="1600">
                 <StackPanel Margin="0, 0, 5, 0">
                     <Image Source="{Binding Path=WeatherIcon}" Width="50" Height="50" HorizontalAlignment="Left"/>
                     <StackPanel Orientation="Horizontal">
                         <Label>City:</Label>
-                        <Label Content="{Binding Path=CityName, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Right"/>
+                        <Label Content="{Binding Path=CityName}" HorizontalAlignment="Right"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <Label>Country:</Label>
-                        <Label Content="{Binding Path=CountryCode, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Right"/>
+                        <Label Content="{Binding Path=CountryCode}" HorizontalAlignment="Right"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <Label>Date:</Label>
@@ -60,7 +61,7 @@
                         <Label Content="{Binding Path=LastUpdate}" HorizontalAlignment="Right"/>
                     </StackPanel>
                     <Button VerticalAlignment="Bottom" 
-                            Content="{Binding ForecastTypeButtonCaption, UpdateSourceTrigger=PropertyChanged}"
+                            Content="{Binding ForecastTypeButtonCaption}"
                             Command="{Binding ChangeForecastTypeCommand}"
                             HorizontalAlignment="Center" 
                             Height="25" 
@@ -77,47 +78,49 @@
                             <Label>Humidity:</Label>
                         </StackPanel>
                         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Left" Height="130">
-                            <Label Content="{Binding Weather.Main, UpdateSourceTrigger=PropertyChanged}"/>
-                            <Label Content="{Binding Path=WeatherMainInfo.Temperature, UpdateSourceTrigger=PropertyChanged}"/>
-                            <Label Content="{Binding Path=WeatherMainInfo.MaxTemperature, UpdateSourceTrigger=PropertyChanged}"/>
-                            <Label Content="{Binding Path=WeatherMainInfo.MinTemperature, UpdateSourceTrigger=PropertyChanged}"/>
-                            <Label Content="{Binding Path=WeatherMainInfo.Humidity, UpdateSourceTrigger=PropertyChanged}"/>
+                            <Label Content="{Binding Weather.Main}"/>
+                            <Label Content="{Binding Path=WeatherMainInfo.Temperature}"/>
+                            <Label Content="{Binding Path=WeatherMainInfo.MaxTemperature}"/>
+                            <Label Content="{Binding Path=WeatherMainInfo.MinTemperature}"/>
+                            <Label Content="{Binding Path=WeatherMainInfo.Humidity}"/>
                         </StackPanel>
                     </StackPanel>
                 </Border>
-                <Border BorderThickness="1" BorderBrush="Black" HorizontalAlignment="Left" Margin="5, 0, 5, 0">
-                    <StackPanel Orientation="Horizontal" Margin="0, 0, 10, 0">
-                        <ItemsControl ItemsSource="{Binding CurretDayForecast}" VerticalAlignment="Center" HorizontalAlignment="Left" Visibility="{Binding Path=CurretDayForecastVisibility}">
-                            <ItemsControl.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left"/>
-                                </ItemsPanelTemplate>
-                            </ItemsControl.ItemsPanel>
-                            <ItemsControl.ItemTemplate>
-                                <DataTemplate>
-                                    <Border BorderThickness="1">
-                                        <ContentControl Content="{Binding UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10, 0, 0, 0"/>
-                                    </Border>
-                                </DataTemplate>
-                            </ItemsControl.ItemTemplate>
-                        </ItemsControl>
-                        <ItemsControl ItemsSource="{Binding DailyForecast}" VerticalAlignment="Center" HorizontalAlignment="Left" Visibility="{Binding Path=DailyForecastVisibility}">
-                            <ItemsControl.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left"/>
-                                </ItemsPanelTemplate>
-                            </ItemsControl.ItemsPanel>
-                            <ItemsControl.ItemTemplate>
-                                <DataTemplate>
-                                    <Button VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10, 0, 0, 0" Template="{StaticResource DailyForecastButtonTemplate}" Command="{Binding ShowForecastForSelectedDayCommand}">
-                                        <Grid>
-                                            <ContentControl Content="{Binding UpdateSourceTrigger=PropertyChanged}"/>
-                                        </Grid>
-                                    </Button>
-                                </DataTemplate>
-                            </ItemsControl.ItemTemplate>
-                        </ItemsControl> 
-                    </StackPanel>
+                <Border BorderThickness="1" BorderBrush="Black" HorizontalAlignment="Left" Margin="5, 0, 5, 0" Width="1130">
+                    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
+                        <StackPanel Orientation="Horizontal" Margin="0, 0, 10, 0">
+                            <ItemsControl ItemsSource="{Binding CurretDayForecast}" VerticalAlignment="Center" HorizontalAlignment="Left" Visibility="{Binding Path=CurretDayForecastVisibility, UpdateSourceTrigger=PropertyChanged}">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left"/>
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border BorderThickness="1">
+                                            <ContentControl Content="{Binding}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10, 0, 0, 0"/>
+                                        </Border>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                            <ItemsControl ItemsSource="{Binding DailyForecast}" VerticalAlignment="Center" HorizontalAlignment="Left" Visibility="{Binding Path=DailyForecastVisibility, UpdateSourceTrigger=PropertyChanged}">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left"/>
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Button VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10, 0, 0, 0" Template="{StaticResource DailyForecastButtonTemplate}" Command="{Binding ShowForecastForSelectedDayCommand}">
+                                            <Grid>
+                                                <ContentControl Content="{Binding}"/>
+                                            </Grid>
+                                        </Button>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </StackPanel>
+                    </ScrollViewer>
                 </Border>
                 <Button HorizontalAlignment="Left" Width="150" Command="{Binding RemoveCommand}">Remove</Button>
             </StackPanel>

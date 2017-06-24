@@ -6,7 +6,6 @@ namespace SimpleWeatherApp.ViewModels
 {
     public class AddCityControlViewModel : ViewModelBase, IAddCityControlViewModel
     {
-        private string _cityName;
         private readonly IMainWindowViewModel _mainWindowViewModel;
 
         public AddCityControlViewModel(IMainWindowViewModel mainWindowViewModel)
@@ -14,21 +13,7 @@ namespace SimpleWeatherApp.ViewModels
             _mainWindowViewModel = mainWindowViewModel;
         }
 
-        public string CityName
-        {
-            get
-            {
-                return _cityName;
-            }
-            set
-            {
-                if (_cityName != value)
-                {
-                    _cityName = value;
-                    OnPropertyChanged(() => CityName);
-                }
-            }
-        }
+        public string CityName { get; set; }
 
         public ICommand AddCommand
         {

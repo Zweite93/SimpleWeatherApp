@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:viewModels="clr-namespace:SimpleWeatherApp.ViewModels"
         xmlns:controls="clr-namespace:SimpleWeatherApp.Controls"
-        Title="Simple Weather" Width="1660">
+        Title="Simple Weather" Height="800" Width="1660">
 
     <Window.DataContext>
         <viewModels:MainWindowViewModel/>
@@ -38,9 +38,8 @@
             <controls:CityWeatherControl/>
         </DataTemplate>
     </Window.Resources>
-    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
-
-        <Grid>
+    <Grid>
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
             <StackPanel>
                 <ItemsControl ItemsSource="{Binding ViewModels}">
                     <ItemsControl.ItemsPanel>
@@ -50,7 +49,9 @@
                     </ItemsControl.ItemsPanel>
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <ContentControl Content="{Binding UpdateSourceTrigger=PropertyChanged}" Margin="5"/>
+                            <ScrollViewer VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Auto">
+                                <ContentControl Content="{Binding}" Margin="5"/>
+                            </ScrollViewer>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
@@ -65,8 +66,8 @@
                 Visibility="{Binding AddButtonVisibility}">
                 </Button>
             </StackPanel>
-        </Grid>
-    </ScrollViewer>
+        </ScrollViewer>
+    </Grid>
 </Window>
 
 

@@ -3,30 +3,33 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:viewModels="clr-namespace:SimpleWeatherApp.ViewModels"
         xmlns:controls="clr-namespace:SimpleWeatherApp.Controls"
-       SizeToContent="WidthAndHeight">
-    
+       SizeToContent="Height" Width="1440">
+
     <Window.Resources>
         <DataTemplate DataType="{x:Type TypeName=viewModels:BaseForecastControlViewModel}">
             <controls:ForecastControl/>
         </DataTemplate>
     </Window.Resources>
-
-    <Grid>
-        <Border BorderThickness="1" BorderBrush="Black" Margin="5">
-            <ItemsControl ItemsSource="{Binding HourlyForecast}" VerticalAlignment="Center" HorizontalAlignment="Left">
-                <ItemsControl.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left"/>
-                    </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <Border BorderThickness="1">
-                            <ContentControl Content="{Binding UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10, 0, 0, 0"/>
-                        </Border>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
-        </Border>
-    </Grid>
+    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
+        <Grid>
+            <Border BorderThickness="1" BorderBrush="Black" Margin="5">
+                <ItemsControl ItemsSource="{Binding HourlyForecast}" VerticalAlignment="Center" HorizontalAlignment="Left">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border BorderThickness="1">
+                                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                                    <ContentControl Content="{Binding}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10, 0, 0, 0"/>
+                                </ScrollViewer>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </Border>
+        </Grid>
+    </ScrollViewer>
 </Window>

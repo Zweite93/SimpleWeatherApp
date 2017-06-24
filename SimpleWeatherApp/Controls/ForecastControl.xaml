@@ -25,11 +25,11 @@
             <Label>Humidity:</Label>
         </StackPanel>
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Left">
-            <Label Content="{Binding Path=Weather.Main, UpdateSourceTrigger=PropertyChanged}"/>
-            <Label Content="{Binding Path=Main.Temperature, UpdateSourceTrigger=PropertyChanged}"/>
-            <Label Content="{Binding Path=Main.MaxTemperature, UpdateSourceTrigger=PropertyChanged}"/>
-            <Label Content="{Binding Path=Main.MinTemperature, UpdateSourceTrigger=PropertyChanged}"/>
-            <Label Content="{Binding Path=Main.Humidity, UpdateSourceTrigger=PropertyChanged}"/>
+            <Label Content="{Binding Path=Weather.Main}"/>
+            <Label Content="{Binding Path=Main.Temperature}"/>
+            <Label Content="{Binding Path=Main.MaxTemperature}"/>
+            <Label Content="{Binding Path=Main.MinTemperature}"/>
+            <Label Content="{Binding Path=Main.Humidity}"/>
         </StackPanel>
     </StackPanel>
 </UserControl>

@@ -63,6 +63,7 @@
       <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="PresentationCore" />
     <Reference Include="System" />
   </ItemGroup>
   <Choose>
@@ -84,6 +85,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="ViewModelsTesting\CityWeatherControlViewModelTest.cs" />
     <Compile Include="ViewModelsTesting\ForecastControlViewModelTest.cs" />
   </ItemGroup>
   <ItemGroup>

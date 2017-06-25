@@ -17,40 +17,57 @@ namespace UnitTesting.ViewModelsTesting
     public class ForecastControlViewModelTest
     {
         private readonly City _city;
+
         public ForecastControlViewModelTest()
         {
             ContainerHelper.Container = new UnityContainer();
             _city = JsonConvert.DeserializeObject<City>(Resources.LondonCurretWeatherJsonResponse);
             _city.ForecastInfo =
                 JsonConvert.DeserializeObject<ForecastInfo>(Resources.LondonForecastJsonResponse).Forecast;
+
+            var mock = Mock.Of<IDialogManager>();
+            ContainerHelper.Container.RegisterInstance(mock);
         }
 
         [TestMethod]
-        public void HorulyForecastTest()
+        public void HourlyForecastControlViewModel_InstanceTest()
         {
-            var hourluForecastVm = new HourlyForecastControlViewModel(_city.ForecastInfo[0]);
+            Assert.IsNotNull(GetHourlyForecastControlViewModel());
+        }
+
+        [TestMethod]
+        public void DailyForecastControlViewModel_InstanceTest()
+        {
+            Assert.IsNotNull(GetDailyForecastControlViewModel());
+        }
+
+        [TestMethod]
+        public void HourlyForecastControlViewModel_WeatherInfoCaptionTest()
+        {
+            var hourluForecastVm = GetHourlyForecastControlViewModel();
 
             TestBaseProperties(hourluForecastVm);
             Assert.AreEqual("14:00", hourluForecastVm.Date);
         }
 
         [TestMethod]
-        public void DailyForecastTest()
+        public void DailyForecastControlViewModel_WeatherInfoCaptionTest()
         {
-            var dailyForecast = new List<Forecast>
-            {
-                _city.ForecastInfo[1],
-                _city.ForecastInfo[2]
-            };
+            var dailyForecastVm = GetDailyForecastControlViewModel();
 
-            var mock = new Mock<IDialogManager>();
-            ContainerHelper.Container.RegisterInstance(mock.Object);
-
-            var dailyForecastVm = new DailyForecastControlViewModel(_city.ForecastInfo[0], dailyForecast);
             TestBaseProperties(dailyForecastVm);
-
             Assert.AreEqual("16.02.2017", dailyForecastVm.Date);
+        }
 
+        private HourlyForecastControlViewModel GetHourlyForecastControlViewModel()
+        {
+            return new HourlyForecastControlViewModel(_city.ForecastInfo[0]);
+        }
+
+        private DailyForecastControlViewModel GetDailyForecastControlViewModel()
+        {
+            var dailyForecast = new List<Forecast> { _city.ForecastInfo[1] };
+            return new DailyForecastControlViewModel(_city.ForecastInfo[0], dailyForecast);
         }
 
         private void TestBaseProperties(BaseForecastControlViewModel baseForecastControlView)

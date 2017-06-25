@@ -10,7 +10,7 @@ namespace SimpleWeatherApp
             return OpenWeather.GetCity(cityName);
         }
 
-        public CityForecast GetCityForecastByName(string cityName)
+        public ForecastInfo GetCityForecastByName(string cityName)
         {
             return OpenWeather.GetCityForecast(cityName);
         }
@@ -19,6 +19,6 @@ namespace SimpleWeatherApp
     public interface ICityRepository
     {
         City GetCityByName(string cityName);
-        CityForecast GetCityForecastByName(string cityName);
+        ForecastInfo GetCityForecastByName(string cityName);
     }
 }

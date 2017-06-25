@@ -43,9 +43,9 @@ namespace SimpleWeatherApp.ViewModels
                 return;
             }
 
-            cityInstance.Forecast = cityRepository.GetCityForecastByName(CityName);
+            cityInstance.ForecastInfo = cityRepository.GetCityForecastByName(CityName).Forecast;
 
-            if (cityInstance.Forecast == null)
+            if (cityInstance.ForecastInfo == null)
             {
                 MessageBox.Show("Incorect City", "Error", MessageBoxButton.OK);
                 return;

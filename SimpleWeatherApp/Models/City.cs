@@ -46,7 +46,7 @@ namespace SimpleWeatherApp.Models
     }
 
     [JsonObject("RootObject")]
-    public class CityForecast
+    public class ForecastInfo
     {
         [JsonProperty("list")]
         public List<Forecast> Forecast { get; set; }
@@ -65,6 +65,6 @@ namespace SimpleWeatherApp.Models
         public string Name { get; set; }
         [JsonProperty("dt")]
         public int Date { get; set; }
-        public CityForecast Forecast { get; set; }
+        public List<Forecast> ForecastInfo { get; set; }
     }
 }

@@ -5,10 +5,10 @@ using SimpleWeatherApp.Models;
 
 namespace SimpleWeatherApp.OpenWeatherApi
 {
-    class OpenWeather
+    public class OpenWeather
     {
         private const string AppId = "27143ce6ada508dd2518e4c453789964";
-        private const string  ApiUrl = @"http://api.openweathermap.org/data/2.5";
+        private const string ApiUrl = @"http://api.openweathermap.org/data/2.5";
         private const string ForecastUri = "/forecast?q=";
         private const string CurretWeatherUri = "/weather?q=";
         private const string Metric = "&units=metric";
@@ -31,7 +31,7 @@ namespace SimpleWeatherApp.OpenWeatherApi
             }
         }
 
-        public static CityForecast GetCityForecast(string cityName)
+        public static ForecastInfo GetCityForecast(string cityName)
         {
             using (var client = new WebClientExtended())
             {
@@ -40,7 +40,7 @@ namespace SimpleWeatherApp.OpenWeatherApi
                 try
                 {
                     var response = client.DownloadString(url);
-                    return JsonConvert.DeserializeObject<CityForecast>(response);
+                    return JsonConvert.DeserializeObject<ForecastInfo>(response);
                 }
                 catch (Exception e)
                 {

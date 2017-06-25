@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleWeatherApp", "SimpleWeatherApp\SimpleWeatherApp.csproj", "{718AC573-B941-44C9-AF69-952F6C67173C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTesting", "UnitTesting\UnitTesting.csproj", "{E5C4CF30-68D9-4338-81B6-95C0D29434F2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{718AC573-B941-44C9-AF69-952F6C67173C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{718AC573-B941-44C9-AF69-952F6C67173C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{718AC573-B941-44C9-AF69-952F6C67173C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5C4CF30-68D9-4338-81B6-95C0D29434F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5C4CF30-68D9-4338-81B6-95C0D29434F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5C4CF30-68D9-4338-81B6-95C0D29434F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5C4CF30-68D9-4338-81B6-95C0D29434F2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

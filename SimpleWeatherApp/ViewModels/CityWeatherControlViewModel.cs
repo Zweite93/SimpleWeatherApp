@@ -149,7 +149,7 @@ namespace SimpleWeatherApp.ViewModels
         {
             CurretDayForecast = new ObservableCollection<IHourlyForecastControlViewModel>();
             var t = DateTime.Now.ToUniversalTime().DayOfWeek;
-            _city.Forecast.Forecast.Where(r => r.Date.DayOfWeek == DateTime.Now.DayOfWeek)
+            _city.ForecastInfo.Where(r => r.Date.DayOfWeek == DateTime.Now.DayOfWeek)
                 .ForEach(p =>
                     CurretDayForecast.Add(
                         ContainerHelper.Resolve<IHourlyForecastControlViewModel>(new { forecast = p }))
@@ -163,7 +163,7 @@ namespace SimpleWeatherApp.ViewModels
 
             foreach (
                 var day in
-                _city.Forecast.Forecast.Where(r => r.Date.Date != DateTime.Now.Date).GroupBy(r => r.Date.Date))
+                _city.ForecastInfo.Where(r => r.Date.Date != DateTime.Now.Date).GroupBy(r => r.Date.Date))
             {
                 day.ForEach(weather => dailyForecst.Add(weather));
 

@@ -1,6 +1,6 @@
 Technology used: WPF, .NET 4.5;
 
-API used: API: https://openweathermap.org/api
+API used: https://openweathermap.org/api
 
 Design pattern used: MVVM
 

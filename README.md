@@ -1,4 +1,4 @@
-Technology used: WPF, .NET;
+Technology used: WPF, .NET 4.5;
 
 API used: API: https://openweathermap.org/api
 

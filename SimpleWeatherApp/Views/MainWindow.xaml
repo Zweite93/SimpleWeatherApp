@@ -39,7 +39,7 @@
         </DataTemplate>
     </Window.Resources>
     <Grid>
-        <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
             <StackPanel>
                 <ItemsControl ItemsSource="{Binding ViewModels}">
                     <ItemsControl.ItemsPanel>
@@ -49,9 +49,7 @@
                     </ItemsControl.ItemsPanel>
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <ScrollViewer VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Auto">
                                 <ContentControl Content="{Binding}" Margin="5"/>
-                            </ScrollViewer>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
